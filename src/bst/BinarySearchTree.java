@@ -120,7 +120,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
 	}
 	
 	private void preOrderRecurse(BSTNode<T> node) {
-		
+		System.out.println("poggies");
 	}
 	
 	//Traverse the tree in an preorder fashion but using a stack
