@@ -183,18 +183,6 @@ public class BinarySearchTree<T extends Comparable<T>> {
 			BSTNode toPop = in.pop(); 
 			System.out.print(toPop + " "); 
 		}
-	
-		
-		/* while(current!= null) {    //goes to the right and pushes in stack
-			current = current.rightChild; 
-			in.push(current);
-			if (current.leftChild!= null) {  //if it 
-				current = curren.leftChild (in.push(current);
-			}
-		}  */
-		                                  //how to push the rightmost 
-	
-		
 		
 	}
 	
