@@ -151,6 +151,45 @@ public class BinarySearchTree<T extends Comparable<T>> {
 	public void inOrderStack() {
 		Stack<BSTNode<T>> in = new Stack<BSTNode<T>>();
 		
+		BSTNode current = root; 
+		in.push(current);
+		while (current.leftChild != null) { 
+			current = current.leftChild; //goes to the left 
+			if (current.rightChild!= null) {    //if it has a right child push it first
+				in.push(current.rightChild); 
+			}
+			in.push(current);   //push the left after
+		}
+		
+		while (!in.isEmpty()) {  //pop all the left nodes 
+			BSTNode toPop = in.pop(); 
+			System.out.print(toPop + " "); 
+		}
+		
+		current = root;   //reset to root 
+		while (current.rightChild !=null) { 
+			current = current.rightChild; 
+			if (current.leftChild!= null) { 
+				in.push(current.leftChild); //if it has a left child push and pop right after
+				BSTNode toPop = in.pop(); 
+				System.out.print(toPop + " ");   
+			}
+			in.push(current); 
+			BSTNode toPop = in.pop(); 
+			System.out.print(toPop + " "); 
+		}
+	
+		
+		/* while(current!= null) {    //goes to the right and pushes in stack
+			current = current.rightChild; 
+			in.push(current);
+			if (current.leftChild!= null) {  //if it 
+				current = curren.leftChild (in.push(current);
+			}
+		}  */
+		                                  //how to push the rightmost 
+	
+		
 		
 	}
 	
