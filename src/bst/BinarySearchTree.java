@@ -131,7 +131,20 @@ public class BinarySearchTree<T extends Comparable<T>> {
 	//Traverse the tree in an preorder fashion but using a stack
 	//Print the current node first and then recurse on the children
 	public void preOrderStack() {
-	
+		Stack <BSTNode<T>> pre = new Stack<BSTNode<T>>(); 
+		pre.push(root); 
+		while (!pre.empty()) { 
+			BSTNode<T> element = pre.peek(); 
+			System.out.print(element + " "); 
+			pre.pop(); 
+			
+			if (element.rightChild!= null) { 
+				pre.push(element.rightChild); 
+			}
+			if (element.leftChild!= null) { 
+				pre.push(element.leftChild);
+			}
+		}
 	}
 		
 
@@ -154,35 +167,19 @@ public class BinarySearchTree<T extends Comparable<T>> {
 	//Traverse the tree in an inorder fashion but using a stack
 	public void inOrderStack() {
 		Stack<BSTNode<T>> in = new Stack<BSTNode<T>>();
-		
 		BSTNode current = root; 
-		in.push(current);
-		while (current.leftChild != null) { 
-			current = current.leftChild; //goes to the left 
-			if (current.rightChild!= null) {    //if it has a right child push it first
-				in.push(current.rightChild); 
+		while (!in.isEmpty() || current!= null) { 
+			if (current != null) { 
+				in.push(current);   
+				current = current.leftChild; 
 			}
-			in.push(current);   //push the left after
-		}
+			else { 
+				current = in.pop(); //go to the latest element pushed
+				System.out.print(current.data + " "); 
 		
-		while (!in.isEmpty()) {  //pop all the left nodes 
-			BSTNode toPop = in.pop(); 
-			System.out.print(toPop + " "); 
-		}
-		
-		current = root;   //reset to root 
-		while (current.rightChild !=null) { 
-			current = current.rightChild; 
-			if (current.leftChild!= null) { 
-				in.push(current.leftChild); //if it has a left child push and pop right after
-				BSTNode toPop = in.pop(); 
-				System.out.print(toPop + " ");   
+				current = current.rightChild; 
 			}
-			in.push(current); 
-			BSTNode toPop = in.pop(); 
-			System.out.print(toPop + " "); 
 		}
-		
 	}
 	
 	//Traverse the tree in an postorder fashion
